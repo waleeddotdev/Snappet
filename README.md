@@ -1,4 +1,4 @@
-![Snappet Banner](https://10015.io/assets/tools/pages/code-to-image-converter/code-to-image-converter.png)
+![Snappet Banner](https://github.com/waleeddotdev/Snappet/blob/504010ceed8ee72ddab4feaa4bdfb4d6b4fa1e23/public/assets/readme/Banner.png)
 ## About The Project
 
 Snappet is a web app that allows developers to generate beautiful images of their code, making it easy to share on social media platforms such as Instagram, Twitter, and LinkedIn. With Snappet, you can showcase your coding skills in an attractive, engaging way by converting raw code into visually appealing images.
