@@ -1,5 +1,24 @@
+<br />
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+   <img width="200" height="200" src="https://github.com/waleeddotdev/Snappet/blob/cf7c0966ff22b7e0d5bcdfbcfdf61e1fc1cf9274/public/assets/logo.png" />
+  </a>
+
+  <h3 align="center">Snappet</h3>
+
+  <p align="center">
+    Turn plain code into eye-catching visuals
+    <br />
+    <a href="https://github.com/waleeddotdev/Snappet">View Demo</a>
+    &middot;
+    <a href="https://github.com/waleeddotdev/Snappet/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    &middot;
+    <a href="https://github.com/waleeddotdev/Snappet/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
+
 ![Snappet Banner](https://github.com/waleeddotdev/Snappet/blob/504010ceed8ee72ddab4feaa4bdfb4d6b4fa1e23/public/assets/readme/Banner.png)
-## About The Project
+## About
 
 Snappet is a web app that allows developers to generate beautiful images of their code, making it easy to share on social media platforms such as Instagram, Twitter, and LinkedIn. With Snappet, you can showcase your coding skills in an attractive, engaging way by converting raw code into visually appealing images.
 
@@ -62,19 +81,19 @@ See the [open issues](https://github.com/waleeddotdev/Snappet/issues) for a full
 
 Snappet is an open-source project, and contributions are welcome! If you want to help improve Snappet, feel free to submit pull requests or suggest new features. Here's how you can contribute:
 
-### Reporting Bugs
+#### Reporting Bugs
 If you encounter any bugs, please open an issue and describe the problem in detail so that it can be fixed.
 
-### Suggesting Features
+#### Suggesting Features
 If you have ideas for new features or improvements, feel free to create a feature request issue.
 
-### Code Contributions
+#### Code Contributions
 If you want to submit code, please:
 1. Fork the repository and create a new branch.
 2. Make your changes and write tests if applicable.
 3. Open a pull request with a clear description of what you’ve done.
 
-### Guidelines
+#### Guidelines
 - Follow the existing code style.
 - Ensure your code works correctly and is properly tested.
 - Keep pull requests small and focused on a single change or feature.
