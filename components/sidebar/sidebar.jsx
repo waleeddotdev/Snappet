@@ -3,10 +3,11 @@
 import { TbDeviceGamepad3Filled } from "react-icons/tb";
 import { BiSolidMessageDetail } from "react-icons/bi";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { IoMdImage } from "react-icons/io";
 import Mockup from "./sections/mockup/mockup";
-import Frame from "./sections/frame/frame";
+import Frame from "./sections/frame/frame"; import { BsImageFill } from "react-icons/bs";
 
+
+import { BsGrid1X2Fill } from "react-icons/bs";
 
 
 
@@ -18,16 +19,16 @@ const Sidebar = () => {
                 <Tabs defaultValue="mockup" className="w-full h-full">
                     <TabsList>
                         <TabsTrigger value="mockup">
-                            <IoMdImage size={20} />
+                            <BsGrid1X2Fill size={18} />
                             Mockup
                         </TabsTrigger>
                         <TabsTrigger value="frame">
-                            <IoMdImage size={20} />
+                            <BsImageFill size={18} />
                             Frame
                         </TabsTrigger>
                     </TabsList>
                     <TabsContent value="mockup"><Mockup /></TabsContent>
-                    <TabsContent value="frame"><Frame/></TabsContent>
+                    <TabsContent value="frame"><Frame /></TabsContent>
                 </Tabs>
             </div>
         </div>
@@ -40,7 +41,7 @@ const Header = () => {
     return (
         <div className="card !py-[15px]">
             <div className="flex flex-row items-center gap-[5px] justify-center">
-                <TbDeviceGamepad3Filled size={20} />
+                <img className="w-[40px]" src="/assets/logo-nocursor.png" />
                 <p className="font-semibold text-lg text-card-foreground">Snappet</p>
             </div>
             <BiSolidMessageDetail size={20} />
