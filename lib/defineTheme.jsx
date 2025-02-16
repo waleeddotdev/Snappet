@@ -70,7 +70,6 @@ const defineTheme = (theme) => {
         ])
             .then(([monaco, themeData]) => {
                 monaco.editor.defineTheme(theme.toString(), themeData);
-                console.log(`Theme ${theme} loaded successfully.`);
                 resolve();
             })
             .catch((error) => {

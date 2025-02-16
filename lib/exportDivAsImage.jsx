@@ -7,7 +7,6 @@ export const exportDivAsImage = async (scale = 1, format = 'png', filename = 'ex
         const originalBackground = targetDiv.style.backgroundColor;
         const originalBackgroundImage = targetDiv.style.backgroundImage;
 
-        alert(originalBackgroundImage)
 
         const shouldBeTransparent = !originalBackground || originalBackground.trim() === "none" || originalBackground.trim() === "";
 
@@ -30,7 +29,6 @@ export const exportDivAsImage = async (scale = 1, format = 'png', filename = 'ex
         link.download = `${filename}.${format}`;
         link.click();
 
-        console.log(`Image saved as ${filename}.${format}`);
     } catch (error) {
         console.error('Error exporting the div as an image:', error);
     }
