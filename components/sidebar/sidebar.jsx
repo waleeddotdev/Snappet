@@ -1,14 +1,33 @@
 "use client"
 
-import { TbDeviceGamepad3Filled } from "react-icons/tb";
 import { BiSolidMessageDetail } from "react-icons/bi";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Mockup from "./sections/mockup/mockup";
-import Frame from "./sections/frame/frame"; import { BsImageFill } from "react-icons/bs";
+import { BsImageFill } from "react-icons/bs";
 
 
 import { BsGrid1X2Fill } from "react-icons/bs";
+import dynamic from "next/dynamic";
+import { cn } from "@/lib/utils";
 
+const Mockup = dynamic(() => import("./sections/mockup/mockup"), { ssr: false, loading: () => 
+   <div className="space-y-4">
+        <Skeleton className="h-[60px]" />
+        <Skeleton className="h-[60px]" />
+        <Skeleton className="h-[150px]" />
+        <Skeleton className="h-[150px]" />
+        <Skeleton className="h-[250px]" />
+        <Skeleton className="h-[250px]" />
+        <Skeleton className="h-[150px]" />
+   </div>
+ });
+const Frame = dynamic(() => import("./sections/frame/frame"), { ssr: false, loading: () => 
+    <div className="space-y-4">
+        <Skeleton className="h-[70px]" />
+        <Skeleton className="h-[80px]" />
+        <Skeleton className="h-[100px]" />
+        
+    </div>
+ });
 
 
 const Sidebar = () => {
@@ -48,3 +67,15 @@ const Header = () => {
         </div>
     )
 }
+
+export const Skeleton = ({ className, ...props }) => {
+    return (
+        <div
+            className={cn(
+                "bg-gradient-to-r from-btn to-btn animate-pulse w-full h-full rounded-card",
+                className
+            )}
+            {...props}
+        ></div>
+    );
+};

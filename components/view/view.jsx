@@ -55,6 +55,7 @@ const View = () => {
     const editorRef = useRef(null);  // Reference to Monaco editor
 
     useEffect(() => {
+        if (typeof window === "undefined") return;
         // Check if editor is initialized
         if (editorRef.current) {
             const model = editorRef.current.getModel();  // Get the model from the editor
@@ -65,16 +66,30 @@ const View = () => {
     }, [langauge]);
 
     useEffect(() => {
+        console.log("typeof window:", typeof window);
+
+        if (typeof window === "undefined") {
+            console.log("updateThemeColor: window is undefined");
+            return;
+        }
+
         // Function to get the editor theme's background color dynamically
         const updateThemeColor = () => {
+
+            if (typeof window === "undefined") {
+                console.log("updateThemeColor: window is undefined");
+                return;
+            }
+
+            console.log("typeof window:", typeof window);
+
             const editorElement = document.querySelector(
                 ".monaco-editor"
             );
             if (editorElement) {
-                const backgroundColor = window
-                    .getComputedStyle(editorElement)
+                const backgroundColor = getComputedStyle(editorElement)
                     .getPropertyValue("background-color");
-                setThemeColor(backgroundColor || "#1E1E1E"); // Fallback if the color can't be fetched
+                setThemeColor(backgroundColor || "#1E1E1E");
             }
         };
 
