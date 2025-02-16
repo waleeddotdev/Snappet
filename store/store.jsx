@@ -17,9 +17,15 @@ const useStore = create((set, get) => ({
     },
     fontSize: 16,
     lineHeight: 1,
+    noise: 20,
+    blur: 0,
+    bgImage: { type: "image", value: "https://mir-s3-cdn-cf.behance.net/projects/404/d0bf76110130697.Y3JvcCw1NzUzLDQ1MDAsMTEyNSww.png" },
+    frameDimension: { name: "default", aspect_ratio: "16:9", width: 1920, height: 1080 },
     setLineHeight: (lineHeight) => set({ lineHeight }),
     setTheme: (theme) => set({ theme }),
     setLangauge: (langauge) => set({ langauge }),
+    setBlur: (blur) => set({ blur }),
+    setNoise: (noise) => set({ noise }),
     setStyle: (style) => set({ style }),
     setBorderRadius: (borderRadius) => set({ borderRadius }),
     setShadowType: (shadowType) => set({ shadowType }),
@@ -31,6 +37,8 @@ const useStore = create((set, get) => ({
     setPaddingY: (paddingY) => set({ paddingY }),
     setPosition: (position) => set({ position }),
     setFontSize: (fontSize) => set({ fontSize }),
+    setFrameDimension: (frameDimension) => set({ frameDimension }),
+    setBgImage: (bgImage) => set({ bgImage }),
 }))
 
 export default useStore 

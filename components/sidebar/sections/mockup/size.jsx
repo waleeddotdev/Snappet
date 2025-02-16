@@ -30,7 +30,7 @@ const Size = () => {
                     name="Width"
                     value={width}
                     max={800}
-                    min={100}
+                    min={250}
                     setValue={setWidth}
                 />
                 <Slider

@@ -14,9 +14,9 @@ import { BsGrid1X2Fill } from "react-icons/bs";
 const Sidebar = () => {
     return (
         <div className="justify-between w-full max-w-[320px] relative flex p-5 flex-col max-h-screen gap-[10px]  h-full">
-            <Header />
-            <div className="card h-full hide-scrollbar overflow-y-scroll">
-                <Tabs defaultValue="mockup" className="w-full h-full">
+            {/* <Header /> */}
+            <div className="card h-full hide-scrollbar overflow-y-scroll p-0">
+                <Tabs defaultValue="mockup" className="w-full h-full p-0">
                     <TabsList>
                         <TabsTrigger value="mockup">
                             <BsGrid1X2Fill size={18} />
@@ -39,10 +39,10 @@ export default Sidebar
 
 const Header = () => {
     return (
-        <div className="card !py-[15px]">
+        <div className="card ">
             <div className="flex flex-row items-center gap-[5px] justify-center">
                 <img className="w-[40px]" src="/assets/logo-nocursor.png" />
-                <p className="font-semibold text-lg text-card-foreground">Snappet</p>
+                <p className="font-bold text-lg text-card-foreground">Snappet</p>
             </div>
             <BiSolidMessageDetail size={20} />
         </div>

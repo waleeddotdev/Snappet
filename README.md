@@ -17,6 +17,7 @@ Snappet is built using modern web technologies to ensure a fast, responsive, and
 - [Tailwind](https://tailwindcss.com/)
 - [Zustand](https://zustand.docs.pmnd.rs/)
 - [Framer Motion](https://motion.dev/)
+- [React Colorful](https://omgovich.github.io/react-colorful/)
 - [Monaco Editor](https://www.npmjs.com/package/@monaco-editor/react)
 - [Shadcn UI](https://ui.shadcn.com/)
 ## Getting Started
@@ -39,20 +40,20 @@ Before you get started, ensure you have the following installed:
 
 - [x] Add shadows and border sliders
 - [x] Add position and size sliders and options
-- [ ] Add setting options for frame customization
-  - [ ] Add dimension selector (custom and premade)
-  - [ ] Enable background color customization (solid and gradient)
-  - [ ] Allow background opacity adjustments
-  - [ ] Add filters (blur, noise, etc.)
-  - [ ] Allow background image uploads
+- [x] Add setting options for frame customization
+  - [x] Add dimension selector (custom and premade)
+  - [x] Enable background color customization
+  - [x] Allow background opacity adjustments
+  - [x] Add filters (blur, noise, etc.)
+  - [x] Allow background image uploads
 - [ ] Implement pre-designed templates for code presentations
 - [ ] Introduce tweet post templates for easy social media sharing
 - [ ] Build a gradient maker for more customization options
 - [ ] Expand template library with more diverse designs
 - [ ] Add support for changing font family for code styling
 - [ ] Create a custom theme maker for personalized appearances
-- [ ] Improve UI and UX for a more seamless user experience
-- [ ] Enhance the README with detailed guides, use cases, and examples
+- [x] Improve UI and UX for a more seamless user experience
+- [x] Enhance the README with detailed guides, use cases, and examples
 
 
 See the [open issues](https://github.com/waleeddotdev/Snappet/issues) for a full list of proposed features (and known issues).
@@ -83,4 +84,4 @@ Thank you for your interest in contributing to Snappet!
 
 ## Contact
 
-Waleed Nasir - [@waleeddotdev](https://linkedin.com/waleeddotdev) - waleeddotdev@gmail.com
+Waleed Nasir - [Linkedin](https://linkedin.com/waleeddotdev) - [Instagram](https://instagram.com/waleeddotdev) - [Twitter / X](https://twitter.com/waleeddotdev) - waleeddotdev@gmail.com

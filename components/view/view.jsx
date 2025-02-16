@@ -7,6 +7,7 @@ import { defineTheme } from "@/lib/defineTheme";
 import useStore from "@/store/store";
 import { motion } from "framer-motion"
 import CodeEditor from "../code-editor";
+import { set } from "lodash";
 
 const View = () => {
     const [themeColor, setThemeColor] = useState("#1E1E1E");
@@ -24,7 +25,11 @@ const View = () => {
         paddingY,
         position,
         fontSize,
-        lineHeight
+        lineHeight,
+        frameDimension,
+        blur,
+        noise,
+        bgImage,
     } = useStore()
 
 
@@ -44,6 +49,8 @@ const View = () => {
 
         handleThemeChange(theme);
     }, [theme]);
+
+    const limitRef = useRef(null);
 
     const editorRef = useRef(null);  // Reference to Monaco editor
 
@@ -96,46 +103,117 @@ const View = () => {
         return boxShadow;
     }
 
+    const [scaledWidth, setScaledWidth] = useState(0);
+    const [scaledHeight, setScaledHeight] = useState(0);
 
+
+    const getScaledDimensions = (aspectRatio) => {
+        console.log("getScaledDimensions", { aspectRatio, limitRef });
+        if (!limitRef.current) return { width: 0, height: 0 }; // Handle edge case where limitRef isn't rendered yet
+
+        const { width: maxWidth, height: maxHeight } = limitRef.current.getBoundingClientRect();
+        console.log("getScaledDimensions", { maxWidth, maxHeight });
+        const [aspectW, aspectH] = aspectRatio.split(":").map(Number);
+
+        // Start with the best fit width
+        let scaledWidth = Math.min(maxWidth, (maxHeight * aspectW) / aspectH);
+        let scaledHeight = (scaledWidth / aspectW) * aspectH;
+
+        // Ensure height doesn't exceed maxHeight
+        if (scaledHeight > maxHeight) {
+            scaledHeight = maxHeight;
+            scaledWidth = (scaledHeight / aspectH) * aspectW;
+        }
+
+        console.log("getScaledDimensions", { scaledWidth, scaledHeight });
+        return { width: scaledWidth, height: scaledHeight };
+    };
+
+    useEffect(() => {
+        console.log("ScaledDimensions useEffect", { frameDimension, limitRef });
+
+        const { width: scaledWidth, height: scaledHeight } = getScaledDimensions(frameDimension.aspect_ratio);
+        setScaledWidth(scaledWidth);
+        setScaledHeight(scaledHeight);
+
+        console.log("ScaledDimensions useEffect", { scaledWidth, scaledHeight });
+
+    }, [frameDimension.aspect_ratio, limitRef]);
 
 
     return (
-        <main
+        <div
+            ref={limitRef}
             style={{
-                backgroundImage:
-                    "url(https://assets.shots.so/original/desktop/sonoma-light.jpg)",
+                width: "100%", // Parent takes full width
+                height: "80vh", // Adjust this if needed
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                overflow: "hidden",
             }}
-            className="bg-text-secondary bg-cover relative flex flex-row justify-center items-center overflow-hidden p-10 bg-no-repeat bg-center rounded-card w-full h-[70vh]"
         >
-            <motion.div
+
+            <main
+                id="myDiv"
                 style={{
-                    backgroundColor: themeColor,
-                    borderRadius: borderRadius,
-                    borderColor: themeColor,
-                    boxShadow: getBoxShadow(shadowType, shadowOpacity),
-                    width,
-                    height,
-                    scale,
-                    padding: `${paddingY}px ${paddingX}px`,
-                    x: position.x - 96,
-                    y: position.y - 97
-
+                    backgroundImage: `url(${bgImage?.value || ""})`,
+                    backgroundColor: bgImage.type === "color" ? bgImage.value : "",
+                    width: `${scaledWidth}px`,
+                    height: `${scaledHeight}px`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
                 }}
-                transition={{ duration: 0.2, style: "smooth", ease: "easeInOut" }}
-                className=" border overflow-hidden"
+                className="relative flex justify-center overflow-hidden rounded-card items-center p-10"
             >
-                <div className="p-[20px]">
-                    <div className="flex flex-row gap-2">
-                        <div className="size-4 rounded-full bg-red-500" />
-                        <div className="size-4 rounded-full bg-yellow-500" />
-                        <div className="size-4 rounded-full bg-green-500" />
-                    </div>
+                <div
+                    style={{
+                        backdropFilter: `blur(${blur}px)`,
+                    }}
+                    className="w-full h-full z-0 absolute top-0 left-0"
+                />
+                <div
+                    style={{
+                        backgroundImage: `url(/assets/noise.svg)`,
+                        backgroundPosition: "center",
+                        mixBlendMode: "overlay",
+                        opacity: `${noise}%`,
+                    }}
+                    className="w-full h-full z-0 absolute top-0 left-0"
+                />
 
-                </div>
-                <CodeEditor fontSize={fontSize} langauge={langauge} theme={theme} lineHeight={lineHeight}  />
-            </motion.div>
-            <div></div>
-        </main>
+
+                <motion.div
+
+                    style={{
+                        backgroundColor: themeColor,
+                        borderRadius: borderRadius,
+                        borderColor: themeColor,
+                        boxShadow: getBoxShadow(shadowType, shadowOpacity),
+                        width,
+                        height,
+                        scale,
+                        padding: `${paddingY}px ${paddingX}px`,
+                        x: position.x - 96,
+                        y: position.y - 97
+
+                    }}
+                    transition={{ duration: 0.2, style: "smooth", ease: "easeInOut" }}
+                    className=" border z-10 overflow-hidden"
+                >
+                    <div className="p-[20px]">
+                        <div className="flex flex-row gap-2">
+                            <div className="size-4 rounded-full bg-red-500" />
+                            <div className="size-4 rounded-full bg-yellow-500" />
+                            <div className="size-4 rounded-full bg-green-500" />
+                        </div>
+
+                    </div>
+                    <CodeEditor fontSize={fontSize} langauge={langauge} theme={theme} lineHeight={lineHeight} />
+                </motion.div>
+                <div></div>
+            </main>
+        </div>
     );
 };
 
